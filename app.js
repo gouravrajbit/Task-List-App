@@ -7,7 +7,7 @@ const clearTaskBtn = document.querySelector('.clear-tasks');
 //Loading items from Session Storage
 
 const loadItems = () => {
-    if (!localStorage.getItem('itemList')) {
+    if (String(localStorage.getItem('itemList')) === 'null') {
         return;
     }
     console.log(localStorage.getItem('itemList'));
@@ -73,7 +73,7 @@ form.addEventListener('submit', (e) => {
     //storing values to the itemList
 
     let itemList;
-    if (!(localStorage.getItem('itemList'))) {
+    if (String(localStorage.getItem('itemList')) === 'null') {
         itemList = [];
     } else {
         itemList = JSON.parse(localStorage.getItem('itemList'));
