@@ -10,6 +10,7 @@ const loadItems = () => {
     if (!localStorage.getItem('itemList')) {
         return;
     }
+    console.log(localStorage.getItem('itemList'));
 
     const itemList = JSON.parse(localStorage.getItem('itemList'));
 
