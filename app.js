@@ -10,7 +10,7 @@ const loadItems = () => {
     if (String(localStorage.getItem('itemList')) === 'null') {
         return;
     }
-    console.log(localStorage.getItem('itemList'));
+
 
     const itemList = JSON.parse(localStorage.getItem('itemList'));
 
@@ -25,7 +25,6 @@ const loadItems = () => {
 
         // building a tag
         newA.appendChild(newI);
-        console.log(newA);
         newA.classList.add('delete-item', 'secondary-content');
         newA.setAttribute('href', '#');
 
@@ -57,7 +56,6 @@ form.addEventListener('submit', (e) => {
 
     // building a tag
     newA.appendChild(newI);
-    console.log(newA);
     newA.classList.add('delete-item', 'secondary-content');
     newA.setAttribute('href', '#');
 
@@ -95,7 +93,6 @@ document.querySelector('body').addEventListener('click', (e) => {
     if (!e.target.parentElement.classList.contains('delete-item')) {
         return;
     }
-    console.log(e.target);
 
     e.target.parentElement.parentElement.parentElement.removeChild(e.target.parentElement.parentElement);
 
@@ -103,13 +100,9 @@ document.querySelector('body').addEventListener('click', (e) => {
     // and there always be an item in the list as this function is getting called
     let itemList = JSON.parse(localStorage.getItem('itemList'));
     const textData = (e.target.parentElement.parentElement).innerText;
-    console.log(textData);
-    console.log(e.target.parentElement.previousSibling);
     const List = itemList.filter((item) => {
-        console.log(item, textData, item == textData);
         return (item !== textData);
     });
-    console.log(List);
 
     localStorage.setItem('itemList', JSON.stringify(List));
 });
@@ -118,7 +111,6 @@ document.querySelector('body').addEventListener('click', (e) => {
 
 
 // clearing the tasks
-
 clearTaskBtn.addEventListener('click', (e) => {
     e.preventDefault();
     while (ul.childNodes.length) {
@@ -132,7 +124,6 @@ clearTaskBtn.addEventListener('click', (e) => {
 // filtering the tasks
 
 filterInput.addEventListener('keyup', (e) => {
-    console.log(e.type);
     const data = filterInput.value.toLowerCase();
 
     // loop throught the children
